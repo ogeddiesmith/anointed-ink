@@ -3,9 +3,10 @@
 Build gate for anointedink.
 
 Nestor's advertising is wired to his Illinois body art establishment registration:
-77 Ill. Adm. Code 797.1600(b) makes deceptive advertising grounds to suspend or revoke it,
-and 797.1700(b) allows a fine of up to $1,000 for each day a violation stays live. On a
-website that means each day the page is up. So this is a gate, not a checklist.
+A conviction for false or deceptive advertising is a ground to suspend or revoke it (77 Ill.
+Adm. Code 797.1600(b)); any violation of the Act or Part 797 carries up to $1,000 for each day
+the registrant remains in violation (797.1700(b)); and the claims are reachable directly under
+815 ILCS 510. So this is a gate, not a checklist.
 
   python3 lint.py      exit 0 = clean, exit 1 = do not ship
 """
@@ -35,7 +36,7 @@ SUPERIORITY = [  # 815 ILCS 510/2(a)(7). Four named local rivals have a private 
     "best in chicago", "best in the suburbs", "best tattoo shop", "cleanest shop",
     "safest shop", "most experienced", "better than any", "#1 in",
 ]
-AFTERCARE = [  # 77 Ill. Adm. Code 797.600: aftercare is an in-person duty on state forms
+AFTERCARE = [  # 797.600(b)-(c): verbal + written aftercare in the shop. Off the web by choice
     "aftercare instructions", "how to care for your tattoo", "aftercare guide",
 ]
 BANNED = [(t, "credential") for t in CREDENTIAL] + [(t, "health") for t in HEALTH] + \

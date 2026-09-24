@@ -5,7 +5,10 @@ from _data import *
 from _css import CSS
 from _js import JS
 
-MAN = json.load(open("img/manifest.json"))
+# Photos held back from every page. A tattoo of an identifiable child is a use of that
+# child's likeness; hold it until a parent's written release is on file (765 ILCS 1075/30).
+WITHHELD = {"tattoo-child-portrait-with-handprint"}
+MAN = [m for m in json.load(open("img/manifest.json")) if m["slug"] not in WITHHELD]
 BYSLUG = {m["slug"]: m for m in MAN}
 
 
@@ -71,7 +74,7 @@ def shop_ld():
         "geo": {"@type": "GeoCoordinates", "latitude": LAT, "longitude": LNG},
         "hasMap": GBP, "priceRange": "$$", "currenciesAccepted": "USD",
         "image": [f"{BASE}/img/{m['slug']}-1000.webp" for m in MAN[:6]],
-        "logo": f"{BASE}/img/og.jpg",
+        "logo": f"{BASE}/img/icon-512.png",
         "openingHoursSpecification": [
             {"@type": "OpeningHoursSpecification", "dayOfWeek": f"https://schema.org/{d}",
              "opens": o, "closes": c} for d, o, c in HOURS] + [
@@ -160,8 +163,9 @@ def head(title, desc, path, extra_ld=None, og_img="og", preload=None, crumbs=Non
 <meta name="geo.placename" content="{CITY}">
 <meta name="geo.position" content="{LAT};{LNG}">
 <meta name="ICBM" content="{LAT}, {LNG}">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2308080a'/><text x='16' y='23' font-size='19' font-family='Helvetica' font-weight='bold' fill='%23c9a24a' text-anchor='middle'>A</text></svg>">
-<link rel="apple-touch-icon" href="{BASE}/img/og.jpg">
+<link rel="icon" type="image/svg+xml" href="{BASE}/img/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{BASE}/img/favicon-32.png">
+<link rel="apple-touch-icon" href="{BASE}/img/apple-touch-icon.png">
 {pl}{extra_head}
 <style>{CSS}</style>
 {blocks}

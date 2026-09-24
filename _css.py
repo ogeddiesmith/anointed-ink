@@ -4,7 +4,7 @@ CSS = """
 :root{
  --bg:#08080a; --bg2:#0e0e12; --surface:#141419; --surface2:#1b1b22;
  --line:#26262f; --line2:#33333f;
- --tx:#f0eeea; --muted:#9d988f; --muted2:#7a756d;
+ --tx:#f0eeea; --muted:#9d988f; --muted2:#8a847b;
  --gold:#c9a24a; --gold2:#e5c584; --gold-dim:rgba(201,162,74,.14);
  --max:1200px; --gut:24px; --r:14px; --rs:10px;
  --f: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;

@@ -535,10 +535,12 @@ def build_style(sp):
     c = STYLE_COPY[sp["slug"]]
     fmt = dict(city=CITY, artist=ARTIST, biz=BIZ, phone=PHONE, years=YEARS, state=STATE)
     photos = by_tags(sp["tags"])
-    # cover-ups has only a couple of tagged frames; back it with the densest large-scale work
-    if len(photos) < 8:
+    tagged = len(photos)
+    # A couple of categories have only a few tagged frames. Back them with the densest
+    # large-scale work rather than showing a thin grid, and say so in the heading.
+    if tagged < 8:
         extra = [m for m in MAN if m not in photos and
-                 ("sleeve" in m["styles"] or m["quality"] >= 4)][:12 - len(photos)]
+                 ("sleeve" in m["styles"] or m["quality"] >= 4)][:12 - tagged]
         photos = photos + extra
     figs = "".join(figure(m["slug"], sp["slug"] + "/") for m in photos)
     aside = "".join(f"<li>{x}</li>" for x in c["aside"])
@@ -560,6 +562,14 @@ def build_style(sp):
           "areaServed": [{"@type": "City", "name": a} for a in AREAS[:8]],
           "url": f"{BASE}/{sp['slug']}/"}
     hero = sp.get("hero") or photos[0]["slug"]
+    if tagged >= 8:
+        gal_heading = f'{sp["h1"]} in the gallery'
+        gal_note = f"{len(photos)} pieces, all tattooed by {ARTIST}."
+    else:
+        gal_heading = f'{sp["h1"]}, and the scale this work takes'
+        gal_note = (f"{tagged} tagged {'piece' if tagged == 1 else 'pieces'} in this category, "
+                    f"shown alongside {len(photos) - tagged} large-scale pieces that show the "
+                    f"density the work calls for. All tattooed by {ARTIST}.")
     return head(c["title"].format(**fmt), c["desc"].format(**fmt), sp["slug"] + "/",
                 extra_ld=[ld] + extra,
                 crumbs=[(html.unescape(re.sub("<[^>]+>", "", sp["h1"])), sp["slug"] + "/")],
@@ -574,9 +584,8 @@ def build_style(sp):
    <div class="note" style="margin-top:20px">Serving {CITY}, Oak Lawn, Worth, Alsip, Palos
    Heights, Bridgeview, Burbank and Evergreen Park.</div></div>
  </div>
- <h2 style="margin-top:60px">{sp["h1"]} in the gallery</h2>
- <p class="areas" style="margin-bottom:24px">{len(photos)} pieces, all tattooed by
- {ARTIST}.</p>
+ <h2 style="margin-top:60px">{gal_heading}</h2>
+ <p class="areas" style="margin-bottom:24px">{gal_note}</p>
  <div class="gal-grid">{figs}</div>
  <h2 style="margin-top:64px">Questions</h2>
  <div style="margin-top:22px">{faq_html}</div>
@@ -871,7 +880,7 @@ def build_spanish():
    pareja queda la aguada gris, y cu&aacute;nta piel se deja libre. Si ese equilibrio sale
    mal, la pieza se convierte en una mancha gris en cinco a&ntilde;os.</p>
    <p>Es un estilo con su propio lenguaje: letra fina y old english, las m&aacute;scaras de
-   re&iacute; ahora llora despu&eacute;s, catrinas, la Virgen de Guadalupe, rosarios, relojes
+   r&iacute;e ahora, llora despu&eacute;s, catrinas, la Virgen de Guadalupe, rosarios, relojes
    y rosas, y retratos de familia. La letra es lo m&aacute;s dif&iacute;cil, porque se dibuja
    a mano alzada sobre la piel y un temblor queda para siempre.</p>
    <p>{ARTIST} lleva {YEARS} a&ntilde;os tatuando y este es el trabajo que m&aacute;s le
@@ -885,7 +894,7 @@ def build_spanish():
    cubrimiento, manda tambi&eacute;n una foto clara con luz de d&iacute;a del tatuaje que ya
    tienes.</p>
    <p>Se requiere un dep&oacute;sito para apartar la fecha, y ese dep&oacute;sito se descuenta
-   del total. Debes ser mayor de 18 a&ntilde;os y traer identificaci&oacute;n oficial con foto
+   del total. Debes tener 18 a&ntilde;os o m&aacute;s y traer identificaci&oacute;n oficial con foto
    y fecha de nacimiento. En Illinois no existe el permiso de los padres para tatuar a un
    menor.</p>
    <div class="cta"><a class="btn btn-p" href="{SMS}">Mandar mi idea</a>
@@ -983,7 +992,8 @@ def build_post(p, prev_p, next_p):
             f"<details><summary>{f['q']}</summary><p>{f['a']}</p></details>"
             for f in p["faq"]))
 
-    return head(p["title"] + " | " + BIZ, p["metaDescription"], path,
+    # no brand suffix on post titles: the headline is already long and the SERP truncates
+    return head(p["title"], p["metaDescription"], path,
                 extra_ld=ld, crumbs=[("Blog", "blog/"), (p["title"], path)],
                 og_img=hero or "og",
                 preload=hero) + f"""

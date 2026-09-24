@@ -49,7 +49,7 @@ TAGLINE = "Don't be average. Be set apart."
 # ---- verified Google reviews ----------------------------------------------
 REVIEWS = [
     # Verbatim from the Google Business Profile, including original spelling and punctuation.
-    # 16 CFR 255.0(b): editing a review so it no longer fairly reflects its substance is
+    # 16 CFR 255.1(a)-(b): editing a review so it no longer fairly reflects its substance is
     # deceptive, so these are NOT cleaned up. Ellipsis only where the review continues.
     ("Owner and Main Tattoo Artist Nestor never disappoints. I Have had 2 tattoos done by Nestor "
      "one was a complete cover up and the 2nd was a partial cover up and add on.&hellip;",
@@ -60,7 +60,7 @@ REVIEWS = [
      "another appointment! Book it dont wait!", "Sean M."),
 ]
 # Deliberately NOT republished: a review opening "Best tattoo shop in town". Lifting it onto our
-# own site converts it into our own superiority claim (16 CFR 255.0(b) Example 1), which 815 ILCS
+# own site converts it into our own superiority claim (16 CFR 255.1(a)-(b)), which 815 ILCS
 # 510/2(a)(7) reaches and which four named local rivals have a private right of action over.
 
 RATING_AS_OF = "September 24, 2026"   # date-stamp the rating so it is true-as-of, not a promise

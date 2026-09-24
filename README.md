@@ -52,9 +52,12 @@ cd ../photos && python3 process.py
 ## Why `lint.py` exists
 
 Nestor's advertising is wired to his Illinois body art establishment registration.
-77 Ill. Adm. Code 797.1600(b) makes deceptive advertising grounds to suspend or revoke that
-registration, and 797.1700(b) allows a fine of up to $1,000 **for each day** a violation stays
-live. On a website that means each day the page is up.
+A conviction for false or deceptive advertising is a ground to suspend or revoke that
+registration (77 Ill. Adm. Code 797.1600(b)), and any violation of the Act or Part 797 carries a
+fine of up to $1,000 **for each day** the registrant remains in violation (797.1700(b)). The
+claims are also reachable directly under 815 ILCS 510. (Corrected 2026-09-24 against the rule
+text: this used to say 797.1600(b) needs no conviction and that the fine runs each day a page is
+up.)
 
 So the linter is a gate, not a checklist. It fails the build on:
 
@@ -65,8 +68,10 @@ So the linter is a gate, not a checklist. It fails the build on:
   sellers in March 2024.
 - **Superiority claims.** Four named local rivals have a private right of action under
   815 ILCS 510/2(a)(7).
-- **Aftercare content.** 77 Ill. Adm. Code 797.600 requires aftercare be delivered in person
-  on state-provided materials, signed by both parties. A web page cannot satisfy that.
+- **Aftercare content, by choice.** 77 Ill. Adm. Code 797.600(b) requires verbal and written
+  aftercare instructions for each client, and 797.600(c) signed Department education materials.
+  Nothing bans aftercare online; the site keeps it off so it never contradicts the in-shop duty.
+  (Corrected 2026-09-24: this used to say the rule requires state forms signed by both parties.)
 - **"18+ with parental consent" phrasing.** Illinois has no parental consent exception for
   tattooing (720 ILCS 5/12C-35(a)).
 - `aggregateRating` in JSON-LD, em dashes, UK spellings, stock photo sources, missing alt

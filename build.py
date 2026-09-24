@@ -708,7 +708,7 @@ def build_404():
     # here breaks on /blog/typo/ and href="" (the Home link) reloads the missing page. Every
     # relative href is therefore made absolute against BASE. Skip link and schemes untouched.
     page = head(f"Page not found | {BIZ}", "That page does not exist.", "") + f"""
-<section><div class="narrow" style="text-align:center;padding:60px 0">
+<section><div class="narrow" style="text-align:center;padding-top:60px;padding-bottom:60px">
  <p class="eyebrow">404</p><h1>That page does not exist</h1>
  <p class="lede" style="margin:0 auto">The link may be old, or the address may have a typo in
  it. The gallery and the booking page are both one click away.</p>

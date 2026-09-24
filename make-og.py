@@ -7,6 +7,7 @@ run JS and several will not take WebP or AVIF. Run after build.py.
   python3 make-og.py <hero-slug>
 """
 import json, os, subprocess, sys, base64
+from _data import GRATING, GCOUNT, PHONE, RATING_AS_OF  # one source with the site
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 OUT = "img/og.jpg"
@@ -27,6 +28,7 @@ h1{font-size:62px;line-height:1.04;font-weight:800;letter-spacing:-.025em;margin
 .sub{font-size:26px;color:#a29d96;line-height:1.45;margin-bottom:32px}
 .meta{display:flex;gap:16px;align-items:center;font-size:22px;font-weight:700}
 .pill{background:#17171c;border:1px solid #2b2b34;border-radius:999px;padding:11px 22px}
+.asof{font-size:17px;color:#77726b;margin-top:14px}
 .stars{color:#d4a548;letter-spacing:.06em}
 .r{width:452px;position:relative;flex-shrink:0}
 .r img{width:100%;height:100%;object-fit:cover}
@@ -39,12 +41,14 @@ h1{font-size:62px;line-height:1.04;font-weight:800;letter-spacing:-.025em;margin
  <div class="sub">Custom tattoos by Nestor Juarez.<br>Black &amp; grey Chicano realism, portraits,
  cover-ups.</div>
  <div class="meta">
-  <span class="pill"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &middot; 115 reviews</span>
-  <span class="pill">(708) 770-2754</span>
+  <span class="pill"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> __R__ &middot; __N__ reviews</span>
+  <span class="pill">__P__</span>
  </div>
+ <div class="asof">Google rating as of __D__</div>
 </div>
 <div class="r"><img src="data:image/webp;base64,__IMG__"></div>
-</body>""".replace("__IMG__", data)
+</body>""".replace("__IMG__", data).replace("__R__", GRATING).replace("__N__", GCOUNT)\
+        .replace("__P__", PHONE).replace("__D__", RATING_AS_OF)
 
     open("_og.html", "w").write(html)
     subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",

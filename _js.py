@@ -12,6 +12,11 @@ JS = """
    var open=links.classList.toggle('open');
    burger.setAttribute('aria-expanded',open?'true':'false');
   });
+  function closeNav(){ links.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  links.addEventListener('click',function(e){ if(e.target.closest('a')) closeNav(); });
+  d.addEventListener('keydown',function(e){
+   if(e.key==='Escape'&&links.classList.contains('open')){ closeNav(); burger.focus(); }
+  });
  }
 
  /* gallery filtering, with the active filter reflected in the URL hash so a

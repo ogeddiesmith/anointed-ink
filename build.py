@@ -949,6 +949,9 @@ def build_post(p, prev_p, next_p):
         txt = m.group(1)
         return f'<h2 id="{slugify_heading(txt)}">{txt}</h2>'
     body = re.sub(r"<h2>(.*?)</h2>", anchor_h2, body, flags=re.S)
+    # wide tables scroll inside their own box on phones instead of widening the page
+    body = re.sub(r"<table\b", '<div class="tbl" role="region" aria-label="Table" tabindex="0"><table', body)
+    body = body.replace("</table>", "</table></div>")
 
     heads = p.get("headings") or re.findall(r'<h2 id="[^"]*">(.*?)</h2>', body, re.S)
     toc = ""

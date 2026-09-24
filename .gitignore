@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+_og.html
+_og.png
+_topsheet.jpg
+.DS_Store

@@ -52,10 +52,10 @@ REVIEWS = [
     # 16 CFR 255.0(b): editing a review so it no longer fairly reflects its substance is
     # deceptive, so these are NOT cleaned up. Ellipsis only where the review continues.
     ("Owner and Main Tattoo Artist Nestor never disappoints. I Have had 2 tattoos done by Nestor "
-     "one was a complete cover up and the 2nd was a partial cover up and add on&hellip;",
+     "one was a complete cover up and the 2nd was a partial cover up and add on.&hellip;",
      "Timothy C."),
     ("I always have a good experience getting tattooed by Nestor- his artwork is top notch and "
-     "always keeps me coming back!", "Marie E."),
+     "always keeps me coming back!&hellip;", "Marie E."),
     ("We got 2 tattoos that look like stickers!! Awesome work I loved the work so much I booked "
      "another appointment! Book it dont wait!", "Sean M."),
 ]
@@ -64,6 +64,7 @@ REVIEWS = [
 # 510/2(a)(7) reaches and which four named local rivals have a private right of action over.
 
 RATING_AS_OF = "September 24, 2026"   # date-stamp the rating so it is true-as-of, not a promise
+RATING_AS_OF_ES = "24 de septiembre de 2026"   # same date for the Spanish page; update both together
 
 # ---- contact routes, ordered by how Nestor actually works -------------------
 SMS_BODY = ("Hi Nestor, I saw your site.%0A%0AIdea:%0APlacement:%0ARough size in inches:"

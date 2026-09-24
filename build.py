@@ -46,7 +46,7 @@ of them.</p></div>
 # ===================================================================== HOME
 STYLE_CARDS = [
     ("Black &amp; grey Chicano realism",
-     "Smooth grey wash, hard contrast, and the masks, script and religious imagery the style was "
+     "Smooth gray wash, hard contrast, and the masks, script and religious imagery the style was "
      "built on. This is the work Nestor is asked for most.", "black-and-grey-chicano-realism/"),
     ("Cover-ups",
      "Old work, faded work, or a name you would rather not explain. Cover-ups are their own "
@@ -59,7 +59,7 @@ STYLE_CARDS = [
      "comes through this shop, and the reason for the shop&rsquo;s name.", "religious-tattoos/"),
     ("Memorials",
      "Portraits, dates, script and the imagery that belongs with them, laid out so the piece "
-     "still reads clearly twenty years from now.", "memorial-tattoos/"),
+     "stays as readable as possible for years to come.", "memorial-tattoos/"),
     ("Aztec &amp; cultural work",
      "Jaguar and eagle warriors, sun stones, headdresses and the heritage imagery that sits at "
      "the center of Chicano tattooing.", "aztec-and-chicano-culture-tattoos/"),
@@ -73,7 +73,7 @@ STYLE_CARDS = [
 
 FAQ = [
     ("Do I need a deposit to book?",
-     "Yes. A deposit holds your appointment and it comes off the price of the tattoo on the day. "
+     "Yes. A deposit holds your appointment and it comes off the price of the tattoo. "
      "It pays for the drawing time that happens before you ever sit down, which is why it is "
      "asked for up front."),
     ("What does a tattoo cost here?",
@@ -94,17 +94,17 @@ FAQ = [
      "sleeve is planned as one composition and then built in stages, so you always know what is "
      "coming next."),
     ("How old do I have to be?",
-     "Eighteen, and a parent cannot sign that away. Under 720 ILCS 5/12C-35(a) it is a Class A "
+     "Eighteen, and a parent cannot sign that away. Under 720 ILCS 5/12C-35 it is a Class A "
      "misdemeanor in Illinois to tattoo, or even to offer to tattoo, anyone under 18, and there "
      "is no parental consent exception in the tattoo statute. Different body art procedures are "
      "governed by different rules, but for tattooing the answer is simply no."),
     ("Do I need to bring ID?",
      "Yes, a government-issued photo ID showing your date of birth, every visit. Illinois rules "
-     "require the shop to verify age from the ID itself (77 Ill. Adm. Code 797.400(k)), which "
-     "means we check it even for people we have tattooed a dozen times."),
+     "require the shop to verify age from the ID itself (77 Ill. Adm. Code 797.400(k)), and we "
+     "check it even for people we have tattooed a dozen times."),
     ("Can I bring my kid with me to my appointment?",
      "Only with their parent or legal guardian physically present. 720 ILCS 5/12C-35(b) says a "
-     "person under 18 may not enter or remain on the premises where tattooing is being performed "
+     "tattoo shop may not let a person under 18 enter or remain on the premises where tattooing is being performed "
      "unless accompanied by a parent or legal guardian. Note that this is an accompaniment rule, "
      "not a consent form: somebody has to actually be there with them. If you are the one in the "
      "chair and your child would otherwise be on their own, arrange childcare first."),
@@ -123,7 +123,7 @@ STEPS = [
     ("Leave a deposit",
      "The deposit locks your date and covers the drawing time. It comes off the final price."),
     ("Come in and sit",
-     "Bring photo ID. Eat beforehand. Plan for the session to run the length you were quoted."),
+     "Bring photo ID. Plan for the session to run the length you were quoted."),
 ]
 
 
@@ -181,7 +181,7 @@ def build_home():
 </div></section>
 
 <section class="alt"><div class="wrap">
- <div class="sec-head"><p class="eyebrow">Portfolio</p><h2>Recent work</h2>
+ <div class="sec-head"><p class="eyebrow">Portfolio</p><h2>Selected work</h2>
  <p>Every photograph on this site is Nestor&rsquo;s own tattooing. Click any piece to see it
  larger.</p></div>
  <div class="gal-grid">{gal}</div>
@@ -191,14 +191,14 @@ def build_home():
 
 <section><div class="wrap">
  <div class="sec-head"><p class="eyebrow">Cover-ups</p>
- <h2>The tattoo you regret is not permanent</h2></div>
+ <h2>The tattoo you regret does not have to be the one people see</h2></div>
  <div class="grid g2" style="align-items:center">
   <div>
    <p>The photograph beside this is one job, shown twice. On the left is an old dark tattoo with
-   the new design stencilled straight over the top of it. On the right is the finished piece.</p>
+   the new design stenciled straight over the top of it. On the right is the finished piece.</p>
    <p>That is what a cover-up actually is. You are not erasing anything. You are designing a
    bigger, darker, busier piece whose shadows land exactly where the old ink sits, so the eye
-   never finds it again.</p>
+   goes to the new piece instead.</p>
    <p>Send a clear daylight photo of what you have and you will get a straight answer on what is
    realistic, including when the answer is that it needs to be bigger than you hoped.</p>
    <p><a class="btn btn-p" href="cover-up-tattoos/">How cover-ups work &rarr;</a></p>
@@ -206,7 +206,7 @@ def build_home():
   <div class="hero-img">{pic('tattoo-crowned-skull-cover-up', 1000,
                              sizes='(max-width:940px) 92vw, 46vw')}
    <p class="areas" style="padding:14px 4px 0;font-size:.87rem">Stencil over the existing tattoo,
-   and the finished crowned skull. Same arm, same session.</p></div>
+   and the finished crowned skull. Same arm, before and after.</p></div>
  </div>
 </div></section>
 
@@ -252,7 +252,7 @@ def build_gallery():
               {"@type": "ImageObject", "contentUrl": f"{BASE}/img/{m['slug']}-1000.webp",
                "thumbnailUrl": f"{BASE}/img/{m['slug']}-400.webp",
                "caption": m["caption"], "creator": {"@id": BASE + "/about/#nestor"},
-               "creditText": ARTIST, "license": BASE + "/"} for m in MAN]}
+               "creditText": ARTIST} for m in MAN]}
     return head(
         f"Tattoo Gallery | {len(MAN)} Tattoos by {ARTIST}",
         f"{len(MAN)} tattoos by {ARTIST} at {BIZ} in {CITY}, IL. Filter by black and grey "
@@ -268,8 +268,8 @@ def build_gallery():
  <div class="masonry">{figs}</div>
  <div class="note" style="margin-top:34px"><strong>About these photographs.</strong>
  Every image here is work Nestor tattooed himself. Several carry his own watermark, which reads
- <em>Ghtto_Mex</em> or <em>Tattoonestuh_Juarez</em>. Some pieces are photographed fresh, still
- under wrap, which is why the skin around them looks red.</div>
+ <em>Ghtto_Mex</em> or <em>Tattoonestor_juarez</em>. Some pieces are photographed fresh, still
+ under wrap, which is why a few of them look glossy or soft.</div>
  <div class="cta"><a class="btn btn-p" href="tel:{TEL}">Call {PHONE}</a>
  <a class="btn btn-s" href="../book/">Book a consultation</a></div>
 </div></section>
@@ -281,18 +281,18 @@ def build_gallery():
 # ============================================================== STYLE PAGES
 STYLE_COPY = {
 "black-and-grey-chicano-realism": dict(
- title="Chicano Black &amp; Grey Tattoos | {city}, IL",
+ title="Chicano Black & Grey Tattoos | {city}, IL",
  desc="Black and grey Chicano realism tattoos by {artist} in {city}, IL. Portraits, script, "
       "masks, religious and memorial work. Call {phone}.",
- lede="The style this shop is known for, tattooed in {city} and across the southwest suburbs.",
+ lede="The style this shop is known for, tattooed in {city} for clients from across the southwest suburbs.",
  body="""
 <p>Black and grey is not a color tattoo with the color left out. It is built entirely from
-contrast: how dark the darks go, how smooth the grey wash stays, and how much bare skin is left
-doing nothing at all. Get that balance wrong and the piece turns into a grey smudge in five
-years. Get it right and it still reads across a room in twenty.</p>
+contrast: how dark the darks go, how smooth the gray wash stays, and how much bare skin is left
+doing nothing at all. Get that balance wrong and the piece can turn into a gray smudge in five
+years. Get it right and it stands a far better chance of still reading across a room in twenty.</p>
 <p>Chicano tattooing layers its own vocabulary on top of that. Fine line script. Laugh now, cry
 later masks. Catrinas and rosaries. Clocks, roses, and portraits of family. The lettering in
-particular is unforgiving, because it is drawn freehand onto skin and a wobble is permanent.</p>
+particular is unforgiving, because a letter has no tolerance and a wobble is permanent.</p>
 <p>Nestor has been tattooing for {years} years, and this is the work people drive out to
 {city} for.</p>""",
  aside=("Portraits worked from your own photographs", "Fine line and Old English script",
@@ -312,7 +312,7 @@ has to be bigger, darker and busier in exactly the right places.</p>
 <p>Which is why the first step is always a photograph. Send a clear, well lit picture of the
 existing tattoo before booking anything. From that you get a straight answer on what is realistic,
 including the answers people do not want: that it needs to be larger than you hoped, that it needs
-a session of laser fading first, or that the design you have in mind is too light to do the job.</p>
+laser fading first, or that the design you have in mind is too light to do the job.</p>
 <p>You will not be told a cover-up will work when it will not. That conversation is cheaper before
 the needle than after it.</p>""",
  aside=("A clear photo in daylight, no flash", "A rough measurement of the existing tattoo",
@@ -326,7 +326,7 @@ the needle than after it.</p>""",
  lede="The hardest thing to get right, and the first thing anybody notices.",
  body="""
 <p>A portrait is the least forgiving tattoo there is. Everybody looking at it already knows what a
-face is supposed to do, so a millimetre of error in an eyelid reads instantly as wrong, even to
+face is supposed to do, so a millimeter of error in an eyelid reads instantly as wrong, even to
 someone who has never thought about tattooing in their life.</p>
 <p>The work starts with your photograph. A sharp, well lit, straight-on reference makes a good
 portrait possible. A dark, low resolution phone picture with a hand across half the face does not,
@@ -348,7 +348,7 @@ flash sheet.</p>
 <p>Religious pieces tend to be the ones people think about the longest before booking, and they
 are often the ones that carry the most weight afterwards. A Christ portrait on a shoulder, a
 rosary down a forearm, a verse in script that only means something to the person wearing it.</p>
-<p>These pieces also make the hardest technical demands, because a face in soft grey wash and a
+<p>These pieces also make some of the hardest technical demands, because a face in soft gray wash and a
 tight line of script sitting beside each other need completely different handling.</p>""",
  aside=("Christ portraits", "Praying hands and rosaries", "Crosses and crucifixes",
         "Cherubs and angels", "Scripture and verse in script", "Guadalupe and saint imagery")),
@@ -356,7 +356,7 @@ tight line of script sitting beside each other need completely different handlin
 "memorial-tattoos": dict(
  title="Memorial Tattoos in {city}, IL | {artist}",
  desc="Memorial tattoos by {artist} in {city}, IL. Portraits, dates, script and imagery laid "
-      "out so the piece still reads clearly in twenty years.",
+      "out with extra space so the piece has room to age.",
  lede="A piece you will carry for the rest of your life, so it gets planned properly.",
  body="""
 <p>A memorial tattoo is the one piece nobody wants to redo. That changes how it should be
@@ -375,7 +375,7 @@ takes.</p>""",
  title="Aztec Tattoos in {city}, IL | {biz}",
  desc="Aztec and cultural tattoos by {artist} in {city}, IL. Jaguar and eagle warriors, "
       "sun stones and headdresses, in black and grey or color.",
- lede="Warriors, sun stones, headdresses, and the heritage imagery at the center of Chicano "
+ lede="Warriors, sun stones, headdresses, and the heritage imagery that runs through Chicano "
       "tattooing.",
  body="""
 <p>Aztec imagery is some of the most rewarding work to tattoo and some of the easiest to do badly.
@@ -416,7 +416,7 @@ color, which is often the strongest version of the idea.</p>""",
  body="""
 <p>There are two ways to end up with a sleeve. You can collect tattoos one at a time and hope they
 eventually meet, or you can plan the whole arm first and then fill it in over a series of
-sittings. The second way looks dramatically better and it is not more expensive, because you are
+sittings. The second way looks dramatically better and it is usually not more expensive, because you are
 not paying to fix the gaps afterwards.</p>
 <p>Planning first means deciding where the piece breathes. The empty skin in a good sleeve is
 doing as much work as the imagery, and it is the first thing sacrificed when an arm gets filled
@@ -439,10 +439,11 @@ STYLE_FAQ = {
   "because the blends have to be packed properly, so a color version of the same design "
   "usually costs more overall."),
  ("Do you freehand the lettering?",
-  "Script and Old English are drawn onto the skin rather than applied from a stencil, which is "
-  "why the sizing conversation happens first. A wobble in freehand lettering is permanent."),
- ("Will grey wash fade faster than solid black?",
-  "Grey is black pigment applied lighter, so lighter areas read softer as the piece settles. "
+  "Rarely. Most lettering goes on from a stencil. Script that has to wrap an arm or ride a "
+  "collarbone gets drawn on with a marker and checked in the mirror first, because a wobble "
+  "in lettering is permanent."),
+ ("Will gray wash fade faster than solid black?",
+  "Gray wash is diluted black pigment, so lighter areas read softer as the piece settles. "
   "That is why the design leaves real negative space rather than filling every inch."),
 ],
 "cover-up-tattoos": [
@@ -454,7 +455,7 @@ STYLE_FAQ = {
   "the eye stops finding it, which is why the new piece has to be bigger and darker."),
  ("Do I need laser fading first?",
   "Sometimes. A lightened base gives back the mid-tones a cover-up design needs for depth. "
-  "If it is needed you will be told before booking, and we refer that work out."),
+  "If it is needed you will be told before booking, and we refer that work out to a laser clinic, which decides the number of sessions."),
  ("Does a cover-up cost more than a fresh tattoo?",
   "Usually, because the same area needs more ink packed into it and often more sittings. The "
   "hourly rate is the same."),
@@ -464,7 +465,7 @@ STYLE_FAQ = {
   "Sharp, well lit, straight on or three quarter, eyes in focus, nothing covering the face. "
   "A portrait can only hold the detail the photograph holds."),
  ("Can you work from an old or damaged photo?",
-  "Sometimes, and it is the most common request for memorial work. Bring the best copy you "
+  "Sometimes, and it is a common request for memorial work. Bring the best copy you "
   "have and you will hear honestly whether there is enough in it to work from."),
  ("How big does a portrait need to be?",
   "Bigger than most people first want. A face has to carry its features at the size it is "
@@ -478,7 +479,7 @@ STYLE_FAQ = {
   "No. Plenty of this imagery is family tradition rather than active practice, and nobody here "
   "is going to interview you about it."),
  ("What goes wrong with religious pieces?",
-  "Usually scale. A Christ portrait in soft grey wash and tight script beside it need "
+  "Usually scale. A Christ portrait in soft gray wash and tight script beside it need "
   "completely different handling, and cramming both into a small space ruins one of them."),
  ("Can you do Guadalupe or a specific saint?",
   "Yes. Bring the version you have in mind, because the iconography varies and the details "
@@ -509,7 +510,7 @@ STYLE_FAQ = {
 ],
 "color-realism-tattoos": [
  ("Does color hold up over time?",
-  "Black pigment is carbon and holds its tone. Color pigments shift more, and some hold far "
+  "Black pigment is usually carbon and tends to hold its tone longest. Color pigments shift more, and some hold far "
   "better than others, which is why the palette gets decided before the first line."),
  ("Can I mix color with black and grey?",
   "Yes, and it is often the strongest version of the idea. A black and grey composition with "
@@ -527,9 +528,14 @@ STYLE_FAQ = {
   "actually there."),
  ("Should I plan the whole sleeve first?",
   "Yes. Collecting tattoos one at a time and hoping they meet is what produces the gaps you "
-  "then pay to fix. Planning first is not more expensive."),
+  "then pay to fix. Planning first is usually not more expensive."),
 ],
 }
+
+ES_ALT = ('<link rel="alternate" hreflang="en" href="' + BASE + '/black-and-grey-chicano-realism/">'
+          '<link rel="alternate" hreflang="es" href="' + BASE + '/es/tatuajes-estilo-chicano/">'
+          '<link rel="alternate" hreflang="x-default" href="' + BASE + '/black-and-grey-chicano-realism/">')
+
 
 def build_style(sp):
     c = STYLE_COPY[sp["slug"]]
@@ -568,12 +574,13 @@ def build_style(sp):
     else:
         gal_heading = f'{sp["h1"]}, and the scale this work takes'
         gal_note = (f"{tagged} tagged {'piece' if tagged == 1 else 'pieces'} in this category, "
-                    f"shown alongside {len(photos) - tagged} large-scale pieces that show the "
+                    f"shown alongside {len(photos) - tagged} more pieces from the gallery that show the "
                     f"density the work calls for. All tattooed by {ARTIST}.")
     return head(c["title"].format(**fmt), c["desc"].format(**fmt), sp["slug"] + "/",
                 extra_ld=[ld] + extra,
                 crumbs=[(html.unescape(re.sub("<[^>]+>", "", sp["h1"])), sp["slug"] + "/")],
-                og_img=hero) + f"""
+                og_img=hero,
+                extra_head=ES_ALT if sp["slug"] == "black-and-grey-chicano-realism" else "") + f"""
 <section><div class="wrap">
  <div class="sec-head"><p class="eyebrow">{sp["nav"]}</p><h1>{sp["h1"]}</h1>
  <p>{c["lede"].format(**fmt)}</p></div>
@@ -625,8 +632,8 @@ def build_about():
    take in color realism, Aztec and cultural work, memorials, anime and cover-ups.</p>
    <p>The shop runs on a straightforward principle: quality takes time and experience, and
    neither of those is cheap. If you are shopping on price he will tell you plainly that he is
-   not your artist. If you want something drawn specifically for you, and built to still read in
-   twenty years, that is the work.</p>
+   not your artist. If you want something drawn specifically for you, and built to stay readable
+   as it ages, that is the work.</p>
    <p>A lot of what comes through the door is faith-led. Christ portraits, scripture, memorial
    pieces for people who have been lost. That is deliberate, and the shop&rsquo;s name is not an
    accident.</p>
@@ -636,7 +643,7 @@ def build_about():
                              'about/', sizes='(max-width:940px) 92vw, 46vw')}</div>
  </div>
  <div class="grid g4" style="margin-top:56px">
-  <div class="card"><h3>{YEARS} years</h3><p>Tattooing professionally.</p></div>
+  <div class="card"><h3>{YEARS} years</h3><p>Of tattooing experience.</p></div>
   <div class="card"><h3>{GRATING} stars</h3><p>From {GCOUNT}
    <a href="{GBP}" rel="noopener">Google reviews</a>.</p></div>
   <div class="card"><h3>{RATE}/hour</h3><p>Shop rate. Smaller pieces quoted flat.</p></div>
@@ -655,7 +662,7 @@ def build_about():
 def build_book():
     steps = "".join(f"<li><h3>{t}</h3><p>{d}</p></li>" for t, d in STEPS)
     return head(f"Book a Tattoo | {BIZ}, {CITY}, IL",
-                f"Send {ARTIST} your tattoo idea. {BIZ}, {STREET}, {CITY} IL. Text or call "
+                f"Send {ARTIST} your tattoo idea. {BIZ}, {STREET}, {CITY}, {STATE} {ZIP}. Text or call "
                 f"{PHONE}. A deposit holds the date.",
                 "book/", crumbs=[("Book", "book/")]) + f"""
 <section><div class="wrap">
@@ -697,16 +704,20 @@ def build_book():
 
 
 def build_404():
-    return head(f"Page not found | {BIZ}", "That page does not exist.", "") + f"""
+    # GitHub Pages serves this one file at any missing URL, at any depth, so a relative link
+    # here breaks on /blog/typo/ and href="" (the Home link) reloads the missing page. Every
+    # relative href is therefore made absolute against BASE. Skip link and schemes untouched.
+    page = head(f"Page not found | {BIZ}", "That page does not exist.", "") + f"""
 <section><div class="narrow" style="text-align:center;padding:60px 0">
  <p class="eyebrow">404</p><h1>That page does not exist</h1>
  <p class="lede" style="margin:0 auto">The link may be old, or the address may have a typo in
  it. The gallery and the booking page are both one click away.</p>
  <div class="cta" style="justify-content:center">
-  <a class="btn btn-p" href="/gallery/">See the gallery</a>
-  <a class="btn btn-s" href="/">Home</a></div>
+  <a class="btn btn-p" href="gallery/">See the gallery</a>
+  <a class="btn btn-s" href="">Home</a></div>
 </div></section>
 """ + foot()
+    return re.sub(r'href="(?![a-z]+:|#|/)', f'href="{BASE}/', page)
 
 
 # ================================================================== PRICING
@@ -726,7 +737,7 @@ PRICE_FAQ = [
   "so a color piece often runs more sittings than the black and grey version of the same "
   "design. The hourly rate does not change."),
  ("What if my piece needs more than one session?",
-  "You are told the session count before anything is booked. Each sitting is billed at the "
+  "You get an estimated session count before anything is booked. Each sitting is billed at the "
   "hourly rate, and the deposit comes off the last one."),
 ]
 
@@ -742,7 +753,7 @@ def build_pricing():
                 "pricing/", extra_ld=[faq_ld], crumbs=[("Pricing", "pricing/")]) + f"""
 <section><div class="wrap">
  <div class="sec-head"><p class="eyebrow">Pricing</p><h1>What a tattoo costs here</h1>
- <p>Nobody local publishes their rates. Here they are, so you can decide before you spend an
+ <p>Many shops around here do not publish their rates. Here they are, so you can decide before you spend an
  afternoon messaging shops.</p></div>
  <div class="grid g2">
   <div>
@@ -750,9 +761,6 @@ def build_pricing():
    <p>The shop rate is <strong>{RATE} an hour</strong> for large and ongoing work. Small pieces
    are quoted as a flat price instead, because a two inch tattoo takes far more setup than it
    takes needle time. A deposit holds your date and comes off the total.</p>
-   <p>That rate is not a premium and it is not a bargain. It is what an experienced artist
-   doing custom work in this area charges, and you should treat anyone quoting you a fraction
-   of it as telling you something about the tattoo you are going to get.</p>
    <h2>What actually moves the number</h2>
    <ul class="areas" style="line-height:2.1">
     <li><strong>Size.</strong> The obvious one, and the one people underestimate.</li>
@@ -767,7 +775,7 @@ def build_pricing():
     same size.</li>
    </ul>
    <h2>How to get a real quote</h2>
-   <p>Text the shop with four things and you will get a number back rather than a range: a
+   <p>Text the shop with four things and you will get a straight estimate back: a
    reference image, the placement, a rough size in inches, and whether you want black and grey
    or color. For a cover-up, add a clear daylight photo of what is already there.</p>
    <div class="cta"><a class="btn btn-p" href="{SMS}">Text your idea</a>
@@ -780,11 +788,11 @@ def build_pricing():
    <div class="card" style="margin-top:16px"><h3>Deposit</h3>
     <p>Required to hold any date. Comes off the total, never added to it.</p></div>
    <div class="card" style="margin-top:16px"><h3>Multi-session work</h3>
-    <p>You get the session count before booking, not after. Each sitting is billed at the
+    <p>You get an estimated session count before booking, not after. Each sitting is billed at the
     hourly rate.</p></div>
    <div class="note" style="margin-top:20px"><strong>Why there is no price list.</strong>
    A menu of per-piece prices invites people to shop a tattoo like a haircut. Every piece here
-   is drawn for one person, so the honest version is a rate and a real quote.</div>
+   is drawn for one person, so what you get is a rate and a real quote.</div>
   </div>
  </div>
  <h2 style="margin-top:64px">Questions about price</h2>
@@ -811,20 +819,16 @@ def build_oaklawn():
 <section><div class="wrap">
  <div class="sec-head"><p class="eyebrow">Oak Lawn</p>
  <h1>A tattoo artist a few minutes from Oak Lawn</h1>
- <p>{BIZ} sits on 111th Street in {CITY}, right on the Oak Lawn line.</p></div>
+ <p>{BIZ} sits on 111th Street in {CITY}, less than half a mile west of the Oak Lawn line at Central Avenue.</p></div>
  <div class="grid g2">
   <div>
-   <p>If you live in Oak Lawn, the shop is closer than most of the places you will find by
-   searching the village itself. We are at {STREET}, west along 111th Street, which for most
+   <p>If you live in Oak Lawn, the shop is a short drive away. We are at {STREET}, west along 111th Street, which for most
    of Oak Lawn is a shorter run than heading north into the city and a lot easier to park
    for.</p>
-   <p>A good number of the pieces in <a href="../gallery/">the gallery</a> belong to people
-   from Oak Lawn, Worth and Burbank. This is a neighborhood shop, not a destination studio,
-   and most of the work here comes from within about fifteen minutes of the door.</p>
+   <p>You can see the work in <a href="../gallery/">the gallery</a> before you make the drive.</p>
    <h2>What people come here for</h2>
    <p>Mostly <a href="../black-and-grey-chicano-realism/">black and grey Chicano realism</a>,
-   which is {ARTIST}&rsquo;s signature and which almost nobody else in the southwest suburbs
-   is set up for. After that it is <a href="../portrait-tattoos/">portraits</a>,
+   which is {ARTIST}&rsquo;s signature. After that it is <a href="../portrait-tattoos/">portraits</a>,
    <a href="../memorial-tattoos/">memorial pieces</a>,
    <a href="../religious-tattoos/">religious work</a> and
    <a href="../cover-up-tattoos/">cover-ups</a>.</p>
@@ -857,18 +861,14 @@ def build_oaklawn():
 def build_spanish():
     photos = by_tags(["chicano", "aztec-cultural", "religious"], 12)
     figs = "".join(figure(m["slug"], "es/tatuajes-estilo-chicano/") for m in photos)
-    alt = ('<link rel="alternate" hreflang="en" href="' + BASE +
-           '/black-and-grey-chicano-realism/">'
-           '<link rel="alternate" hreflang="es" href="' + BASE + '/es/tatuajes-estilo-chicano/">'
-           '<link rel="alternate" hreflang="x-default" href="' + BASE +
-           '/black-and-grey-chicano-realism/">')
+    alt = ES_ALT
     p = "es/tatuajes-estilo-chicano/"
     return head("Tatuajes Estilo Chicano en Chicago Ridge, IL | Anointed Ink",
                 f"Tatuajes estilo chicano en negro y gris por {ARTIST} en {CITY}, IL. Retratos, "
                 f"piezas religiosas y cubrimientos. {PHONE}.",
-                p, extra_head=alt,
+                p, extra_head=alt, lang="es",
                 og_img="tattoo-catrina-woman-with-roses") + f"""
-<section><div class="wrap">
+<section lang="es"><div class="wrap">
  <div class="sec-head"><p class="eyebrow">En espa&ntilde;ol</p>
  <h1>Tatuajes estilo chicano en {CITY}</h1>
  <p>Negro y gris, retratos, piezas religiosas y trabajo azteca, hechos a mano por
@@ -878,11 +878,10 @@ def build_spanish():
    <p>El estilo chicano en negro y gris no es un tatuaje a color al que le quitaron el color.
    Todo se construye con contraste: qu&eacute; tan oscuros son los negros, qu&eacute; tan
    pareja queda la aguada gris, y cu&aacute;nta piel se deja libre. Si ese equilibrio sale
-   mal, la pieza se convierte en una mancha gris en cinco a&ntilde;os.</p>
+   mal, la pieza puede convertirse en una mancha gris en pocos a&ntilde;os.</p>
    <p>Es un estilo con su propio lenguaje: letra fina y old english, las m&aacute;scaras de
-   r&iacute;e ahora, llora despu&eacute;s, catrinas, la Virgen de Guadalupe, rosarios, relojes
-   y rosas, y retratos de familia. La letra es lo m&aacute;s dif&iacute;cil, porque se dibuja
-   a mano alzada sobre la piel y un temblor queda para siempre.</p>
+   &ldquo;r&iacute;e ahora, llora despu&eacute;s&rdquo;, catrinas, la Virgen de Guadalupe, rosarios, relojes
+   y rosas, y retratos de familia. La letra no perdona, porque no tiene margen de error y un temblor queda para siempre.</p>
    <p>{ARTIST} lleva {YEARS} a&ntilde;os tatuando y este es el trabajo que m&aacute;s le
    piden. Tambi&eacute;n hace <a href="../../cover-up-tattoos/">cubrimientos</a>,
    <a href="../../portrait-tattoos/">retratos</a>,
@@ -905,15 +904,15 @@ def build_spanish():
     <address class="addr" style="font-size:.98rem">{STREET}<br>{CITY}, {STATE} {ZIP}<br>
     <a href="tel:{TEL}">{PHONE}</a></address>
     <p style="margin-top:12px">Lunes a s&aacute;bado, 12pm a 7pm. Domingo cerrado.</p>
-    <p>{RATE} por hora.</p></div>
+    <p>{RATE} por hora en trabajos grandes. Las piezas chicas se cotizan a precio fijo.</p></div>
    <div class="note" style="margin-top:16px">{GRATING} estrellas de {GCOUNT}
-   <a href="{GBP}" rel="noopener">rese&ntilde;as en Google</a>.</div>
-   <p style="margin-top:18px"><a href="../../black-and-grey-chicano-realism/">Read this page in
+   <a href="{GBP}" rel="noopener">rese&ntilde;as en Google</a>, al {RATING_AS_OF_ES}.</div>
+   <p style="margin-top:18px" lang="en"><a href="../../black-and-grey-chicano-realism/" hreflang="en">Read this page in
    English &rarr;</a></p>
   </div>
  </div>
  <h2 style="margin-top:60px">El trabajo</h2>
- <div class="gal-grid" style="margin-top:22px">{figs}</div>
+ <div class="gal-grid" lang="en" style="margin-top:22px">{figs}</div>
 </div></section>
 {lightbox()}
 """ + foot(p)
@@ -996,7 +995,7 @@ def build_post(p, prev_p, next_p):
     return head(p["title"], p["metaDescription"], path,
                 extra_ld=ld, crumbs=[("Blog", "blog/"), (p["title"], path)],
                 og_img=hero or "og",
-                preload=hero) + f"""
+                preload=next((s.strip() for s in re.findall(r"\[\[IMG:([^|\]]+)", p["html"])), hero)) + f"""
 <section><div class="narrow">
  <p class="eyebrow"><a href="../" style="color:var(--gold)">Blog</a></p>
  <h1>{p["title"]}</h1>

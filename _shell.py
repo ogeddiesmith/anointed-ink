@@ -110,7 +110,7 @@ def breadcrumbs(trail, path):
 
 # ----------------------------------------------------------------- head/foot
 def head(title, desc, path, extra_ld=None, og_img="og", preload=None, crumbs=None,
-         extra_head=""):
+         extra_head="", lang="en"):
     robots = ("index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
               if INDEXABLE else "noindex,nofollow")
     canon = f"{BASE}/{path}" if path else BASE + "/"
@@ -131,8 +131,9 @@ def head(title, desc, path, extra_ld=None, og_img="og", preload=None, crumbs=Non
         pl = (f'<link rel="preload" as="image" href="{r}img/{preload}-1000.avif" '
               f'type="image/avif" fetchpriority="high">')
     ogimg = f"{BASE}/img/og.jpg" if og_img == "og" else f"{BASE}/img/{og_img}-1000.webp"
+    ogw, ogh = (1200, 630) if og_img == "og" else BYSLUG[og_img]["sizes"]["1000"]
     return f"""<!doctype html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -146,10 +147,10 @@ def head(title, desc, path, extra_ld=None, og_img="og", preload=None, crumbs=Non
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{ogimg}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="{ogw}">
+<meta property="og:image:height" content="{ogh}">
 <meta property="og:image:alt" content="{BIZ}, custom tattoos by {ARTIST} in {CITY}, {STATE}">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{lang}_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{html.escape(title)}">
 <meta name="twitter:description" content="{html.escape(desc)}">

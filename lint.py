@@ -46,7 +46,18 @@ BANNED = [(t, "credential") for t in CREDENTIAL] + [(t, "health") for t in HEALT
 ALLOWED_CONTEXT = re.compile(r"(do not|does not|never|no |without |cannot|can't)\s*\w*\s*$", re.I)
 
 STOCK = ["unsplash", "pexels", "shutterstock", "istockphoto", "gettyimages", "freepik"]
-UK = ["colour", "centre", "organise", "recognise", "specialis", "favourite", "honours"]
+UK = ["colour", "centre", "organise", "recognise", "specialis", "favourite", "honours",
+      "stencilled", "stencilling", "travelled", "jewellery", "cancelled", "labelled", "modelled"]
+
+# Aftercare slips in as a one-line imperative, not as a heading. 2026-09-24 a blog post shipped
+# "Keep the piece covered when you are out in it", which no term above catches (797.600).
+CARE_IMPERATIVE = re.compile(
+    r"\bkeep (it|the piece|the tattoo|your tattoo|your new tattoo) "
+    r"(covered|out of the sun|moisturi[sz]ed|clean|wrapped)\b"
+    r"|\b(sunscreen|sunblock|spf ?\d+)\b|\bmoisturi[sz]e\b|\b(do not|don't|never) (swim|soak)\b", re.I)
+# Things the artist must not promise or prescribe. Warn, then a human reads the sentence.
+PROMISE = re.compile(r"\b(in|after) (twenty|thirty|\d+) years\b|\bhow many (laser )?sessions\b"
+                     r"|\bguarantee", re.I)
 
 
 def check_text(path, text):
@@ -67,6 +78,12 @@ def check_text(path, text):
     for sdk in STOCK:
         if sdk in low:
             FAIL.append(f"{path}: stock photo source '{sdk}'")
+    for m in CARE_IMPERATIVE.finditer(text):
+        ctx = text[max(0, m.start() - 55):m.end() + 45].replace("\n", " ")
+        FAIL.append(f"{path}: aftercare instruction '{m.group(0)}'  ...{ctx}...")
+    for m in PROMISE.finditer(text):
+        ctx = text[max(0, m.start() - 55):m.end() + 45].replace("\n", " ")
+        WARN.append(f"{path}: promise or prescription, read it: '{m.group(0)}'  ...{ctx}...")
     if re.search(r"18\s*\+?\s*(or|,)?\s*(with|unless)\s+(a\s+)?parent", low):
         FAIL.append(f"{path}: implies parental consent can authorize tattooing a minor. "
                     "Illinois has no such exception (720 ILCS 5/12C-35).")
